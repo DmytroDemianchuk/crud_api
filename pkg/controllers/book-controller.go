@@ -7,6 +7,8 @@ import (
 	"strconv"
 
 	"github.com/dmytrodemianchuk/crud_api/pkg/models"
+	"github.com/dmytrodemianchuk/crud_api/pkg/utils"
+	"github.com/gorilla/mux"
 )
 
 var NewBook models.Book
@@ -15,12 +17,12 @@ func GetBook(w http.ResponseWriter, r *http.Request) {
 	newBooks := models.GetAllBooks()
 	res, _ := json.Marshal(newBooks)
 	w.Header().Set("Context-Type", "pkglication/json")
-	w.WriterHeader(http.StatusOK)
+	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
 
 func GetBookById(w http.ResponseWriter, r *http.Request) {
-	vars := mux.vars(r)
+	vars := mux.Vars(r)
 	bookId := vars["bookid"]
 	ID, err := strconv.ParseInt(bookId, 0, 0)
 	if err != nil {
@@ -43,9 +45,9 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
-	vars := mux.vars(r)
+	vars := mux.Vars(r)
 	bookId := vars["bookId"]
-	ID, err := strconv.ParseInt(bookID, 0, 0)
+	ID, err := strconv.ParseInt(bookId, 0, 0)
 	if err != nil {
 		fmt.Println("error while parsing")
 	}
