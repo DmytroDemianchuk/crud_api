@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/dmytrodemianchuk/crud_api/pkg/configs"
 	"github.com/jinzhu/gorm"
 )
 
@@ -14,8 +15,8 @@ type Book struct {
 }
 
 func init() {
-	config.Connect()
-	db = config.GetDB()
+	configs.Connect()
+	db = configs.GetDB()
 	db.AutoMigrate(&Book{})
 }
 
