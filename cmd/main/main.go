@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github/dmytrodemianchuk/crud_api/pkg/routes"
 	"log"
 	"net/http"
+
+	"github.com/dmytrodemianchuk/crud_api/pkg/routes"
 
 	"github.com/gorilla/mux"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -12,6 +13,6 @@ import (
 func main() {
 	r := mux.NewRouter()
 	routes.RegisterBookStoreRoutes(r)
-	http.Handler("/", r)
+	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe("localhost:9010", r))
 }
