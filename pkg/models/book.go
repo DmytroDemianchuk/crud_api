@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/dmytrodemianchuk/crud_api/pkg/config"
 	"github.com/jinzhu/gorm"
 )
 
