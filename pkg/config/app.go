@@ -1,4 +1,4 @@
-package configs
+package config
 
 import (
 	"github.com/jinzhu/gorm"
@@ -14,7 +14,7 @@ func Connect() {
 	if err != nil {
 		panic(err)
 	}
-		db = d
+	db = d
 }
 func GetDB() *gorm.DB {
 	return db
